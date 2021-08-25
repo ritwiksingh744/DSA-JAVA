@@ -1,0 +1,42 @@
+/*Given a positive number n. You need to write a program to find the maximum sum of distinct numbers such *that the LCM of all these numbers is equal to n.
+*Input: n = 2
+*Output: 3 
+*Explanation: The distinct numbers you can have are 
+*just 1 and 2 and their sum is equal to 3.
+*/
+
+import java.util.*;
+import java.io.*;
+class GFG {
+    public static void main(String args[]) throws IOException {
+        BufferedReader read =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(read.readLine());
+        while (t-- > 0) {
+            int n = Integer.parseInt(read.readLine());
+            Solution ob = new Solution();
+
+            System.out.println(ob.maxSumLCM(n));
+        }
+    }
+}// } Driver Code Ends
+
+
+//User function Template for Java
+class Solution {
+    
+   
+    static int maxSumLCM(int n) {
+        // code here
+        int sum=0;
+        int temp=n;
+        while(n>0){
+            if(temp%n==0){
+              sum+=n;
+            }
+            n--;  
+        }
+        return sum;
+    }
+}
+// Code by Ritwik Singh.
