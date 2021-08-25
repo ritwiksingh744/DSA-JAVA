@@ -1,0 +1,50 @@
+/*Given an array of N positive integers, find GCD of all the array elements.
+*Input: N = 3, arr[] = {2, 4, 6}
+*Output: 2
+*Explanation: GCD of 2,4,6 is 2.
+*/
+
+
+import java.io.*;
+import java.util.*;
+class GfG
+{
+    public static void main(String args[])
+        {
+            Scanner sc = new Scanner(System.in);
+            int t = sc.nextInt();
+            while(t-->0)
+                {
+                    int N = sc.nextInt();
+                    int Arr[] = new int[N];
+                    for(int i = 0;i<N;i++)
+                        Arr[i] = sc.nextInt();
+                    Solution ob = new Solution();
+                    System.out.println(ob.gcd(N,Arr));
+                }
+        }
+}    // } Driver Cod end
+
+
+
+class Solution
+{
+    public int findGcd(int a,int b){
+        if(b==0)
+          return a;
+        else
+          return findGcd(b,a%b);
+    }
+    public int gcd(int N , int arr[]) 
+    { 
+       
+       int cur_gcd=arr[0];
+       for(int i=1;i<=N-1;i++){
+           cur_gcd=findGcd(cur_gcd,arr[i]);
+       }
+       
+       return cur_gcd;    
+          
+    } 
+}
+ // code by Ritwik Singh
