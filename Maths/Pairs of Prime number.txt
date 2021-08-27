@@ -1,0 +1,70 @@
+/*Find all pairs (sets) of prime numbers (p,q) such that p*q <= n, where n is given number.
+*Ex-Input: n = 8
+*Output: 2 2 2 3 3 2
+*Explanation: Pairs(2, 2), (2, 3) and (3, 2)
+*which has both prime numbers and satisfying
+*the given condition.
+*
+*/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class GFG
+{
+    public static void main(String[] args) throws IOException
+    {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine().trim());
+        while(T-->0)
+        {
+            int n = Integer.parseInt(br.readLine().trim());
+            Solution ob = new Solution();
+            int[] ans = ob.prime_pairs(n);
+            for(int i = 0; i < ans.length; i++)
+                System.out.print(ans[i] + " ");
+            System.out.println();
+        }
+    }
+}
+// } Driver Code Ends
+
+
+
+
+class Solution
+{
+    boolean isPrime(int n){
+        if(n==1)
+           return false;
+        if(n==2 || n==3)
+           return true;
+        if(n%2==0 || n%3==0)
+           return false;
+        for(int i=5;i*i<=n;i+=6)
+            if(n%i==0 || n%(i+2)==0)
+               return false;
+        return true;       
+           
+    }
+    public int[] prime_pairs(int n)
+    {
+        
+        ArrayList<Integer> alist=new ArrayList<>();
+        for(int i=2;i<=n;i++){
+            for(int j=2;j<=n;j++)
+            {
+                if((isPrime(i)==true && isPrime(j)==true) && (i*j)<=n)
+                   {
+                       alist.add(i);
+                       alist.add(j);
+                   }
+            }
+        }
+        int arr[] =new int[alist.size()];
+        for(int i=0;i<alist.size();i++){
+            arr[i]=alist.get(i);
+        }
+        
+     return arr;     
+    }
+}  //code by Ritwik Singh
