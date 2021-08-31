@@ -1,0 +1,59 @@
+/*find number of delete characters to make two strings Equal.
+*/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/*Function to count number of characters 
+* to make s1 and s2 equal
+* s1 : first string
+* s2 : second string
+*/
+class Geeks{
+    
+    static int countChars(String s1, String s2)
+    {
+        
+       //Your code here
+       int[] count1=new int[26];
+       int[] count2=new int[26];
+       
+       for(int i=0;i<s1.length();i++)
+           count1[s1.charAt(i)-'a']++;
+       
+       for(int i=0;i<s2.length();i++)
+           count2[s2.charAt(i)-'a']++;
+           
+        int res=0;
+        for(int i=0;i<26;i++)
+           res+=Math.abs(count1[i]-count2[i]);
+           
+        return res;
+    }
+}
+
+class GFG
+{
+    
+	public static void main (String[] args)
+	{
+	     
+    	 Scanner sc = new Scanner(System.in);
+    	
+    	 int t = sc.nextInt();
+    	 
+    	 boolean flag = false;
+    	 while(t-- > 0){
+    	   
+    	   //taking the 2 strings
+    	   String s1=sc.next();
+    	   String s2=sc.next();
+    	  
+    	   Geeks obj=new Geeks();
+    	 
+    	   System.out.println(obj.countChars(s1,s2));
+    	   
+    	 }
+    }
+}
+    // code by Ritwik Singh.
