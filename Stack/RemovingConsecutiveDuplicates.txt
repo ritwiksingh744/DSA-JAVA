@@ -1,0 +1,64 @@
+/*You are given string str. You need to remove the consecutive duplicates from the given string using a *Stack.
+*Example 1:
+*Input: 
+*  aaaaaabaabccccccc
+*Output: 
+*  ababc
+*/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//taking the length of the string
+		int t = Integer.parseInt(br.readLine().trim());
+		while(t-->0){
+		    
+		    //taking the string
+		   String str = br.readLine().trim();
+		   
+		   //calling removeConsecutiveDuplicates method of class solve
+		   System.out.println(new Solution().removeConsecutiveDuplicates(str));
+		}
+	}
+}
+
+
+
+
+class Solution
+{
+    //Function to remove consecutive duplicates from given string using Stack.
+    public static String removeConsecutiveDuplicates(String str)
+    {
+       
+        String s="";
+        Stack<Character>stk=new Stack<>();
+        for(int i=0;i<str.length();i++)
+           stk.push(str.charAt(i));
+        char temp=stk.peek();
+        s+=temp;
+        for(int i=0;i<str.length();i++)
+        {
+           if(temp==stk.peek())
+               stk.pop();
+            else
+              {
+                  temp=stk.peek();
+                  s+=temp;
+                  stk.pop();
+              }
+        }
+        StringBuilder input1 = new StringBuilder();
+ 
+        // append a string into StringBuilder input1
+        input1.append(s);
+ 
+        // reverse StringBuilder input1
+        input1.reverse();
+       return (input1).toString();
+           
+    }
+}   //code by Ritwik Singh
