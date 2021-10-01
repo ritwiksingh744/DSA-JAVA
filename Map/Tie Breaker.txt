@@ -1,0 +1,73 @@
+/*Given an array of names of candidates in an election. A candidate name in array represents a vote casted to *the candidate. You need to find the candidate with maximum votes recieved in the election. It may happen *that two or more candidates may have same votes, in that case you need to return the name of the candidate *which comes first lexicographically in dictionary.
+*
+*Example:
+*Input:
+*4
+*Turin Nick Turin Nick
+*
+*Output:
+*Nick
+*
+*Explanation:
+*Both have the same 2 number of votes but Nick comes first lexicographi
+*/
+
+import java.io.*;
+import java.util.*;
+class GFG {
+	public static void main (String[] args) {
+	    
+	    //Taking input using class Scanner
+		Scanner sc = new Scanner(System.in);
+		
+		//taking total count of testcases
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		    //taking total count of elements
+		    int n=sc.nextInt();
+		    
+		    //Declaring and Initializing an ArrayList
+		    ArrayList<String>names=new ArrayList<>();
+		    
+		    //adding elements to the ArrayList
+		    for(int i=0;i<n;i++)
+		    {
+		        names.add(sc.next());
+		    }
+		    Solution ob = new Solution();
+		    //calling TieBreak method and printing the result
+		    System.out.println(ob.TieBreak(names,n));
+		}
+	}
+}// } Driver Code Ends
+
+
+class Solution{
+        public static String TieBreak(ArrayList<String>names, int n)
+    {
+        
+        int maxx=0;
+       String winner="";
+        HashMap<String,Integer>hm=new HashMap<>();
+        for(String s:names)
+          hm.put(s,hm.getOrDefault(s,0)+1);
+        for(Map.Entry<String,Integer> m:hm.entrySet())
+        {
+            String cur=m.getKey();
+            int val=m.getValue();
+            if(val>maxx)
+            {
+               maxx=val;
+               winner=cur;
+            }
+            else 
+            {
+                if(val==maxx && (winner.compareTo(cur)>0))
+                winner=cur;
+            }
+        }
+       
+        return winner;
+    }
+}    //code by Ritwik Singh
