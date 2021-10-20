@@ -1,0 +1,52 @@
+/*Given two strings s1 and s2 that contain same characters albeit arranged in different permutations. Now, an *extra character can exist in either of s1 or s2. You need to find this extra character.
+*
+*Example 1:
+*
+*Input:
+*  abba baxab
+*
+*Output:
+*  x
+*/
+
+import java.io.*;
+import java.util.*;
+class GFG {
+	public static void main (String[] args) {
+	    
+	    //taking input using class Scanner
+		Scanner sc = new Scanner(System.in);
+		
+		//taking total number of testcases
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		    //taking two String
+		    String s1=sc.next();
+		    String s2=sc.next();
+		    
+		    //calling oneExtraCharacter method 
+		    //and passing s1 and s2 and printing
+		    //the result
+		    System.out.println(oneExtraCharacter(s1,s2));
+		}
+	}
+
+
+public static Character oneExtraCharacter(String s1, String s2)
+{
+    int res=0;
+    int n=Math.min(s1.length(),s2.length());
+    
+    for(int i=0;i<n;i++)
+     res=res^s1.charAt(i)^s2.charAt(i);
+     
+    if(s1.length()<s2.length()) 
+      res=res^s2.charAt(n);
+    else
+       res=res^s1.charAt(n);
+    return (char)res;
+    
+}
+		
+}  //code by Ritwik Singh
